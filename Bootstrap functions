@@ -10,6 +10,7 @@ def ecdf(data):
     y = np.arange(1, n+1) / n
 
     return x, y
+--------------------------------------------------------------------------------------
     
 def pearson_r(x, y):
     """Compute Pearson correlation coefficient between two arrays."""
@@ -18,10 +19,12 @@ def pearson_r(x, y):
 
     # Return entry [0,1]
     return corr_mat[0,1]
+--------------------------------------------------------------------------------------
 
 def bootstrap_replicate_1d(data, func):
     return func(np.random.choice(data, size=len(data)))
-    
+-------------------------------------------------------------------------------------------
+
 def draw_bs_reps(data, func, size=1):
     """Draw bootstrap replicates."""
 
@@ -34,6 +37,7 @@ def draw_bs_reps(data, func, size=1):
 
     return bs_replicates
 --------------------------------------------------------------------------------
+
 # Bootstrap a pair using index
 def draw_bs_pairs_linreg(x, y, size=1):
     """Perform pairs bootstrap for linear regression."""
@@ -113,11 +117,14 @@ for i in range(10000):
 # Compute p-value: p
 p = np.sum(perm_replicates>=r_obs)/len(perm_replicates)
 print('p-val =', p)
---------------------
+-------------------------------------------------------------------------------------------
 
 #A two-sample bootstrap hypothesis test - shifting means
 # Compute mean of all forces: mean_force
-mean_force = np.mean(forces_concat)
+mean_force = np.mean(np.concatenate(force_a,force_b))
+
+# Compute difference of mean impact force from experiment: empirical_diff_means
+empirical_diff_means = diff_of_means(force_a,force_b)
 
 # Generate shifted arrays
 force_a_shifted = force_a - np.mean(force_a) + mean_force
@@ -133,7 +140,8 @@ bs_replicates = bs_replicates_a - bs_replicates_b
 # Compute and print p-value: p
 p = np.sum(bs_replicates>=empirical_diff_means) / 10000
 print('p-value =', p)
-------------------------------------
+---------------------------------------------------------------------------------------------
+
 # Pair bootstrap to calculate a single statistic
 def draw_bs_pairs(x, y, func, size=1):
     """Perform pairs bootstrap for a single statistic."""
