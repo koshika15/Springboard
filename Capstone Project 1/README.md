@@ -21,7 +21,7 @@ To understand the whole process these links can be followed in order:
 [Machine Learning](https://github.com/koshika15/Springboard/blob/master/Capstone%20Project%201/E.%20Machine%20Learning.ipynb)
 
 ## Project Report
-Click [here](https://github.com/koshika15/Springboard/blob/master/Capstone%20Project%201/Capstone%20Project%201_%20Final%20Report.pdf) for the project report.
+Click [here](https://github.com/koshika15/Springboard/blob/master/Capstone%20Project%201/Capstone%20Project%201_%20Final%20Report.pdf) for the full project report.
 
 ## Result
 The objective of this project was to predict the IMDB rating of movies before they are released. The model we came up with gives us good results for movies rated between 4 and 8, most of them within ± 1 error. For the extreme ratings though, we are getting larger error which is mostly within ±2 error points.
